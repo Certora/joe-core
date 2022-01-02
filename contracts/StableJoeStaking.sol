@@ -95,6 +95,8 @@ contract StableJoeStaking is Initializable, OwnableUpgradeable {
      */
     function updatePool() public {
         uint256 rewardTokenBalance = rewardToken.balanceOf(address(this));
+
+        // Did sJoe receive any token
         if (rewardTokenBalance == lastTokenBalance) {
             return;
         }
