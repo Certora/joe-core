@@ -1,3 +1,7 @@
+methods {
+    claimReward() => DISPATCHER(true)
+}
+
 rule sanity(method f)
 {
 	env e;
