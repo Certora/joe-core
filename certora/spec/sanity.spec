@@ -1,6 +1,4 @@
-methods {
-    claimReward() => DISPATCHER(true)
-}
+import "../helpers/erc20.spec"
 
 rule sanity(method f)
 {
