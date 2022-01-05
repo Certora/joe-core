@@ -1,3 +1,5 @@
+.certora*
+.last_confs
 abi/
 artifacts/
 cache/
