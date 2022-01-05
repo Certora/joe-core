@@ -1,20 +1,16 @@
 
 make -C certora munged
 
-echo "TODO: fix the sanity script"
-exit 1
-
-certoraRun \
-    certora/harness/ExampleHarness.sol \
-    certora/helpers/DummyERC20A.sol    \
-    certora/helpers/DummyERC20B.sol    \
-    --verify ExampleHarness:certora/spec/sanity.spec \
-    --rule sanity                       \
-    --solc solc8.0                      \
-    --solc_args '["--optimize"]' \
-    --settings -t=60, \
-    --msg "sanity $1" \
-    --staging \
-    $*
-
-
+for i in `ls certora/harness`
+do
+    certoraRun certora/harness/$i \
+        --verify $(basename $i .sol):certora/spec/sanity.spec \
+        --rule sanity                       \
+        --solc solc6.12                     \
+        --solc_args '["--optimize"]' \
+        --settings -t=60 \
+        --msg "sanity $i" \
+        --send_only \
+        --staging \
+        $*
+done
